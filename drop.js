@@ -7,14 +7,19 @@ function Drop() {
 
   this.fall = () => {
     this.y += this.yspeed;
+    this.x += this.yspeed / 6; // wind
+
     // the closer the drops are, the gravity gets higher
     let grav = map(this.z, 0, 20, 0, 0.2);
     this.yspeed = this.yspeed + grav;
 
-
     if(this.y > height) {
       this.y = random(-200, -100);
       this.yspeed = map(this.z, 0, 20, 4, 10);
+    }
+
+    if(this.x > width) {
+      this.x = random(-200, -100);
     }
   }
 
